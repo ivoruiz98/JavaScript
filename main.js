@@ -90,3 +90,25 @@ const shoppingCart = {
         }
     }
 }
+
+renderStore();
+
+function renderStore(){
+const html = db.items.map(item => {
+    return
+        <div class="item"> 
+            <div class="title">${item.title} </div>
+            <div class="price">${item.title} </div>
+            <div class="qty">${item.title} </div>
+        </div>
+}
+    )   
+}
+
+function numberToCurrency (n){
+    return new Intl.NumberFormat('en-US', {
+        maximumSignificantDigits:2,
+        style:'currency',
+        currency: 'USD'
+    }).format(n);
+}
