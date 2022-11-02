@@ -3,8 +3,7 @@ const db = {
         find: (id) => {
             return db.items.find(item => item.id === id)
         },
-            
-        remove: (items) => {
+            remove: (items) => {
             items.forEach(element => {
                 const product = db.methods.find(item.id);
                 product.qty = product.qty - item.qty;
@@ -18,19 +17,19 @@ const db = {
         {
           id: 0,
           title: 'Apple Watch Serie 7',
-          price: 7000,
+          price: 600,
           qty: 10,
         },
         {
             id: 1,
             title: 'Samsung Galaxy Watch4',
-            price: 5500,
+            price: 350,
             qty: 10,
         },
         {
             id: 2,
             title: 'Xioami Band Mi3',
-            price: 2850,
+            price: 175,
             qty: 10,
         },
         
@@ -106,12 +105,28 @@ const html = db.items.map(item => {
                     Añadir al Carrito de Compras</button>
             </div>
         </div>
-}
-    )   
+        ;
+});
 
     document.querySelector('store-container').innerHTML = html.join("");
 
+    document.querySelectorAll('.item .actions .add').forEach (button=> {
+        button.addEventListener( 'click', e => {
+            const id = parseInt(button.getAttribute('data-id'));
+            const item = db.methods.find(id);
 
+            if(item && item.qty -1 > 0){
+                //añadir a carrito
+            shoppingCart.methods.add(id,1);
+            renderShopppinCart()
+           
+            } else {
+                console.log ("Ya no hay Stock");
+            }
+        });
+    }
+        
+    );
 
 }
 
