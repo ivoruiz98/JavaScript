@@ -98,11 +98,21 @@ const html = db.items.map(item => {
     return
         <div class="item"> 
             <div class="title">${item.title} </div>
-            <div class="price">${item.title} </div>
-            <div class="qty">${item.title} </div>
+            <div class="price">${numberToCurrency(item.price)} </div>
+            <div class="qty">${item.qty} </div>
+            
+            <div class="actions">
+                <button class="add" data-id="${item.id}">
+                    Añadir al Carrito de Compras</button>
+            </div>
         </div>
 }
     )   
+
+    document.querySelector('store-container').innerHTML = html.join("");
+
+
+
 }
 
 function numberToCurrency (n){
